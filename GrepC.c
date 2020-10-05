@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <string.h>
 
-#define d 256 
+//https://stackoverflow.com/questions/11546791/what-is-the-best-hash-function-for-rabin-karp-algorithm 
 
 inline unsigned hash ( void *key, int len )
 {
