@@ -3,10 +3,11 @@
 #include <stdbool.h>
 #include <string.h>
 
+// copied from https://stackoverflow.com/questions/11546791/what-is-the-best-hash-function-for-rabin-karp-algorithm 
 inline unsigned hash ( void *key, int len )
 {
-    unsigned char *p = key;
-    unsigned h = 0;
+    unsigned long char *p = key;
+    unsigned long h = 0;
     int i;
 
     for ( i = 0; i < len; i++ )
