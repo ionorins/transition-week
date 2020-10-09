@@ -40,7 +40,7 @@ public class StringToMove {
     public static Move run(String string, Board board) {
         int destinationVertical = charToInt(string.charAt(3));
         int destinationHorizontal = charToInt(string.charAt(2));
-        int sourceVertical = charToInt(string.charAt(2));
+        int sourceVertical = charToInt(string.charAt(1));
         int sourceHorizontal = charToInt(string.charAt(0));
         boolean takePiece = board.pieceAtLocation(destinationVertical, destinationHorizontal) != null;
         ChessPiece piece = board.pieceAtLocation(sourceVertical, sourceHorizontal);

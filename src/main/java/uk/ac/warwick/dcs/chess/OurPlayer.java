@@ -28,7 +28,7 @@ public class OurPlayer implements Player {
                     .setPath("src/main/java/uk/ac/warwick/dcs/chess/structures/stockfish/engines/").setInstances(4)
                     .setOption(Option.Threads, 4) // Number of threads that Stockfish will use
                     .setOption(Option.Skill_Level, 20) // Stockfish skill level 0-20
-                    .setVariant(Variant.BMI2) // Stockfish Variant
+                    .setVariant(Variant.DEFAULT) // Stockfish Variant
                     .build();
         } catch (StockfishInitException e) {
             e.printStackTrace();
@@ -61,7 +61,7 @@ public class OurPlayer implements Player {
     public Move getMove(int moveNum) {
         Board board = Chess.getBoard();
         String fen = FENConverter.convert(board, this);
-        String result = client.getBestMove(new Query.Builder(QueryType.Best_Move).setFen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1").build());
+        String result = client.getBestMove(new Query.Builder(QueryType.Best_Move).setFen(fen).build());
         Move move = StringToMove.run(result, board); 
         return move;
     }
