@@ -1,1 +1,9 @@
-Error - no moves left?!!!!
+Exception in thread "main" java.lang.NullPointerException
+	at uk.ac.warwick.dcs.chess.Move.<init>(Move.java:19)
+	at uk.ac.warwick.dcs.chess.structures.utils.StringToMove.run(StringToMove.java:47)
+	at uk.ac.warwick.dcs.chess.OurPlayer.getMove(OurPlayer.java:65)
+	at uk.ac.warwick.dcs.chess.Chess.makeMove(Chess.java:160)
+	at uk.ac.warwick.dcs.chess.Chess.runMoves(Chess.java:278)
+	at uk.ac.warwick.dcs.chess.Chess.doMenu(Chess.java:236)
+	at uk.ac.warwick.dcs.chess.Chess.playGame(Chess.java:201)
+	at uk.ac.warwick.dcs.chess.Chess.main(Chess.java:424)
