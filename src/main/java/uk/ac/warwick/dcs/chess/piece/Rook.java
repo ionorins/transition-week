@@ -69,7 +69,6 @@ public class Rook extends ChessPiece {
             }
         }
 
-        availableMoves.cleanInvalidMoves(board);
         return availableMoves.movesToArray();
     }
 

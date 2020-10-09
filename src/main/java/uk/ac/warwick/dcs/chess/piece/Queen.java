@@ -125,7 +125,6 @@ public class Queen extends ChessPiece {
             }
         }
 
-        availableMoves.cleanInvalidMoves(board);
         return availableMoves.movesToArray();
     }
 }
