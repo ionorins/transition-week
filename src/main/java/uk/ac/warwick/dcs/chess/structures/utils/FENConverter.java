@@ -1,5 +1,7 @@
-package uk.ac.warwick.dcs.chess;
+package uk.ac.warwick.dcs.chess.structures.utils;
 
+import uk.ac.warwick.dcs.chess.Board;
+import uk.ac.warwick.dcs.chess.Player;
 import uk.ac.warwick.dcs.chess.piece.*;
 
 public class FENConverter {

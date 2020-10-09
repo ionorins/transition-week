@@ -1,21 +1,20 @@
 package uk.ac.warwick.dcs.chess;
 
-import java.util.ArrayList;
-import java.util.Random;
 import uk.ac.warwick.dcs.chess.piece.ChessPiece;
 import uk.ac.warwick.dcs.chess.structures.stockfish.StockfishClient;
 import uk.ac.warwick.dcs.chess.structures.stockfish.engine.enums.Option;
+import uk.ac.warwick.dcs.chess.structures.stockfish.engine.enums.Query;
+import uk.ac.warwick.dcs.chess.structures.stockfish.engine.enums.QueryType;
 import uk.ac.warwick.dcs.chess.structures.stockfish.engine.enums.Variant;
 import uk.ac.warwick.dcs.chess.structures.stockfish.exceptions.StockfishInitException;
+import uk.ac.warwick.dcs.chess.structures.utils.FENConverter;
+import uk.ac.warwick.dcs.chess.structures.utils.StringToMove;
 
 public class OurPlayer implements Player {
     private boolean isWhite;
     StockfishClient client;
 
-    Random rng = new Random(Chess.randomSeed);
-
     int moveNum;
-    ArrayList<Double> myRandomList;
 
     public String getPlayerName() {
         return "Group11";
@@ -24,26 +23,15 @@ public class OurPlayer implements Player {
     public OurPlayer(boolean isWhite) {
         this.isWhite = isWhite;
         moveNum = 0;
-        myRandomList = new ArrayList<Double>();
         try {
             client = new StockfishClient.Builder()
                     .setPath("src/main/java/uk/ac/warwick/dcs/chess/structures/stockfish/engines/").setInstances(4)
                     .setOption(Option.Threads, 4) // Number of threads that Stockfish will use
                     .setOption(Option.Skill_Level, 20) // Stockfish skill level 0-20
-                    .setVariant(Variant.BMI2) // Stockfish Variant
+                    .setVariant(Variant.DEFAULT) // Stockfish Variant
                     .build();
         } catch (StockfishInitException e) {
             e.printStackTrace();
-        }
-    }
-
-    public void createRandomList() {
-        int numDoublesToGenerate = 4;
-        while (myRandomList.size() < (moveNum + numDoublesToGenerate)) {
-            double[] newNumbers = rng.doubles(numDoublesToGenerate).toArray();
-            for (int i = 0; i < numDoublesToGenerate; i++) {
-                myRandomList.add(newNumbers[i]);
-            }
         }
     }
 
@@ -71,8 +59,10 @@ public class OurPlayer implements Player {
 
     @Override
     public Move getMove(int moveNum) {
-        this.moveNum = moveNum;
         Board board = Chess.getBoard();
-        return null;
+        String fen = FENConverter.convert(board, this);
+        String result = client.getBestMove(new Query.Builder(QueryType.Best_Move).setFen(fen).build());
+        Move move = StringToMove.run(result, board); 
+        return move;
     }
 }

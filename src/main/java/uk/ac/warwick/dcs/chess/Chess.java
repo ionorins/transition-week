@@ -60,7 +60,7 @@ public class Chess {
     }
 
     public Chess(){
-        whitePlayer = new RandomPlayer(true);
+        whitePlayer = new OurPlayer(true);
         blackPlayer = new RandomPlayer(false);
         Chess.board = new Board();
         setupGame(false);
