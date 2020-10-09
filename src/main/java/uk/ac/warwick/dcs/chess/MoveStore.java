@@ -22,4 +22,13 @@ public class MoveStore implements Serializable {
         return moves.toArray(new Move[moves.size()]);
     }
 
+    public void cleanInvalidMoves(Board board) {
+        ArrayList<Move> newMoves = new ArrayList<Move>();
+
+        for (Move move : moves)
+            if (board.validateMove(move) == Chess.OK)
+                newMoves.add(move);
+
+        moves = newMoves;
+    }
 }
