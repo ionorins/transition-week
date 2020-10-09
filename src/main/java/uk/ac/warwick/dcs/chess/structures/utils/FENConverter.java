@@ -43,6 +43,9 @@ public class FENConverter {
                     }
                 }
             }
+            if (blanks > 0) {
+                FEN.append(blanks);
+            }
             if (v != 7) FEN.append("/");
         }
 
