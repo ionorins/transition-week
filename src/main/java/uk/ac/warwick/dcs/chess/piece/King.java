@@ -10,6 +10,20 @@ public class King extends ChessPiece {
     public Move[] getAvailableMoves() {
         availableMoves.clear();
 
+
+        int moveH, moveV;
+        
+        for(int deltaV = -1; deltaV <= 1; deltaV++){
+            for(int deltaH = -1; deltaH <= 1; deltaH++){
+                moveV = this.vertical + deltaV;
+                moveH = this.horizontal + deltaH;
+                if(board.locationValid(moveV,moveH) && (board.pieceAtLocation(moveV,moveH) == null || board.pieceAtLocation(moveV,moveH).isWhite != this.isWhite)){
+                    Move m = new Move(this,moveV,moveH, false);
+                    availableMoves.add(m);
+                }
+            }
+        }
+        
         return availableMoves.movesToArray();
     }
 }
