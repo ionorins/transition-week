@@ -12,12 +12,12 @@ public class FENConverter {
         StringBuilder FEN = new StringBuilder();
 
 //        iterate through rows
-        for (int y = 0; y < 8; y++) {
+        for (int v = 0; v < 8; v++) {
 //            keep count of blanks on row
             int blanks = 0;
 
-            for (int x = 0; x < 8; x++) {
-                ChessPiece piece = board.pieceAtLocation(x, y);
+            for (int h = 0; h < 8; h++) {
+                ChessPiece piece = board.pieceAtLocation(v, h);
 
                 if (piece == null) {
                     blanks++;
@@ -43,7 +43,7 @@ public class FENConverter {
                     }
                 }
             }
-            if (y != 7) FEN.append("/");
+            if (v != 7) FEN.append("/");
         }
 
         FEN.append(player.getIsWhite() ? " w" : " b")

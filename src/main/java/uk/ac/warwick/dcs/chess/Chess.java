@@ -411,7 +411,7 @@ public class Chess {
         }else{
             board = new Board();
         }
-        Chess c = new Chess(board,new RandomPlayer(true), new RandomPlayer(false),blackToStart);
+        Chess c = new Chess(board,new OurPlayer(true), new RandomPlayer(false),blackToStart);
         // c.setupGame();
 
         try{
