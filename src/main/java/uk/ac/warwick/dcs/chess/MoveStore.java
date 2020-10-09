@@ -1,4 +1,5 @@
 package uk.ac.warwick.dcs.chess;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -23,12 +24,31 @@ public class MoveStore implements Serializable {
     }
 
     public void cleanInvalidMoves(Board board) {
-        ArrayList<Move> newMoves = new ArrayList<Move>();
+        // ArrayList<Move> newMoves = new ArrayList<Move>();
 
-        for (Move move : moves)
-            if (board.validateMove(move) == Chess.OK)
-                newMoves.add(move);
+        // // board.validateMove(this.moves.get(0));
+        // for (Move move : moves) {
+        //     Board tmpBoard = board.cloneBoard();
 
-        moves = newMoves;
+        //     if (move.isTakePiece()) {
+        //         // Remove piece from board.
+        //         tmpBoard.removePiece(move.getDestinationVertical(), move.getDestinationHorizontal());
+        //     }
+
+        //     tmpBoard.applyMove(move);
+
+        //     System.out.println("white");
+
+        //     if (move.getPiece().isWhite() && tmpBoard.testWhiteInCheck())
+        //         break;
+
+        //     System.out.println("black");
+        //     if (!move.getPiece().isWhite() && tmpBoard.testBlackInCheck())
+        //         break;
+
+        //     newMoves.add(move);
+        // }
+
+        // moves = newMoves;
     }
 }

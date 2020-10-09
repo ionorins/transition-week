@@ -71,7 +71,7 @@ public class Bishop extends ChessPiece {
             }
         }
 
-        // availableMoves.cleanInvalidMoves(board);
+        availableMoves.cleanInvalidMoves(board);
         return availableMoves.movesToArray();
     }
 }
